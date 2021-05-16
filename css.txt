@@ -1,0 +1,67 @@
+CSS stejně jako HTML není programovací jazyk, jedná se o stylovací jazyk pomocí značek. Jazyk využívá HTML značek a nasazuje na ně vlastní stylovací pravidla. Syntaxe CSS jazyke je velmi jednoduchá a sestává se z selektoru a vlastnosti a hodnoty vlastnosti. Pomocí selektrou vybereme požadovaný HTML element a pomocí vlastnosti změníme jeho parametry (nejčastěji vizuální). Výběr elementu můžeme použít buď pomocí jeho výchozího názvu jako je p,a,body apod. nebo pomocí attributu class či id nebo i pomocí atributu. Důležitou věci při definování selektorů je to jaký má při stylování přednost - stane se nám že chceme stylovat všechny odstavce stejně a některým přidat ještě další atributy pomocí dalšího selektoru a musíme je odhlišit.
+
+Priority -> ID > class > standard, ten co je v sheetu niž v css sheetu.
+
+Pokud nastavíme elementu ID tak by mělo být pro stránku unikátní -> sice nám to bude fungovat pokud to použijeme na více elementů ale z důvodu lepší čitelnosti je dobré to takto nepoužívat.
+
+ ID zapisujeme: 
+ #id-of-para {attribute : value;}
+ Class zapisujeme:
+ .class-of-para{attribute : value;}
+
+p, h1, .anything {color: blue;} - > pokud potřebujeme aplikovat styl na více selektorů jednoduše je spojíme pomocí čárky.
+
+.class p {background-color: red;} -> takto vybereme p element uvnitř třídy class -> například pokud máme div a uvnitř divu máme odstavec -> vybere všechny elementy p nezávisle na hiearchii
+.class > p {background-color: red;} -> vybere POUZE příme potomky a ne všechny jako příklad výše.
+
+p.class {color:red;} -> takto vybereme p elementy které mají třídu class -> rozdíl oproti příkladu výše
+
+Kombinátory:
+
+selektor1 + selektor2 -> vybere selektor2 dalšího SOUROZENCE selektoru1:
+
+Pokud použijeme selektor p+p{color:red;} tak nám obarví pouze drůhý odstavec -> vybere tedy další p za prvním odstavcem a další ignoruje.
+
+<p>...</p>
+<p>...</p>
+<a>...</a>
+<p>...</p>
+
+V tomto případě obarví všechny krom prvního -> a další odstavce které by následovali právě po tom dalším atd.
+
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+
+selektor1 ~ selektor2 -> vybere selektor2 dalšího SOUROZENCE selektoru1 a všechny další nezávisle na jejich umístění:
+
+Pokud použijeme selektor p~p{color:red;} tak nám obarví všechny krom prvního.
+
+<p>...</p>
+<p>...</p>
+<a>...</a>
+<p>...</p>
+
+Pseudo selektory: nelze použít všechny atributy pro tyto selektory -> viz dokumentace MDN pseudo selektory
+
+:hover -> aplikujeme styl při přejetí myší
+:active -> aplikujeme styl při kliku a držení myši!
+:visited -> aplikujeme styl navštívených linků
+:focus -> aplikujeme stly při označení (pomocí tab) -> element musí být focusable
+
+Barvy můžeme zadávat pomocí: hex hodnoty: #0c54f5, RGB: rgb(255,0,36), rgba(200,36,55,0.5) nebo HSLA hsla(250, 50%, 50%, 0.1). Pozadí můžeme definovat pomocí barvy či obrázku/gradientu -> nejlepší je skrz dokuemntaci. 
+Jednotky:
+Absolutní -> px,cm,in,mm -> Mají stále stejnou hodnotu nezávisle na velikosti okna apod.
+Relativní -> jsou vztažené k nečemu!
+Procenta jsou například relativní k rodičovskému elementu -> tzn. pokud budeme mít nastavený element html na 70% a nastavíme body (což je vzhledem k html potomek) 50% tak bude mít 35% vzhledem k viewportu -> budou se nám tedy neústále zmenšovat jak budeme měnit velikost okna prohlížeče -> tohle právě neplatí u absolutních - pokud zmenšíme okno na hodnotu nižší než velikost elementu tak se nám vytvoří posuvník -> takto můžeme definovat třeba minimální šířku elementu. Em a rem -> 1em = 1x velikost fontu v elementu, 2em = 2x velikost...Pokud potřebujeme aby se nám stránka zmenšovala/zvětšovala tak jak formujeme okno prohližeče je třeba používat %. Rem -> 1rem = velikost fontu v kořenovém elementu.Padding a margin -> margin = vnější odsazení, padding = vnitřní odsazení. * {box-sizing : border-box} -> duležitý prvek který nám zahrne padding a margin do celkových rozměrů!
+Div a span -> rozdíl je v display : block  a display : inline -> kde inline aplikuje nastavení pouze pro řádkové atributy a block pro blokové. Blokové elementy měni tok dokumentu -> například odstavec nám odřádkuje a vytvoří automatické odsazení, řádkové elementy jako span nebo například anchor (odkaz) tuto vlastnost nemají a nenaruší tok dokumentu. Inline-block -> jedná se speciální formát - který umožní používat některé block CSS atributy jako je width,height do inline tagu, pokud nastavíme inline-block na blokový element tak již nebude zabírat celý řádek resp. šířku ale pouze tu část kterou zabírá.  
+Floating -> umožní obtékání elementu jiným elementem -> zároveň umožňuje pozicování elementů vedle sebe -> důležitá vlastnost clear : left (right / both), jeden z problémů při floatingu je že element který obaluje floatovací elementy má nulovou výšku a nechová se tedy tak jak by jsme očekávali -> když na obalovač použivejeme overflow : hidden tak bude chování v pořádku.
+Overflow -> tento atribut řeší přetečení obsahu mimo element -> pokud máme nastavenou výšku nějakého elementu absolutně v pixelech tak se nám může stát že text se dostane mimo element a vypadá to velmi nevzhledně -> v tomto případě když dáme overflow : scroll; tak se nám v elementu ukáže scroll bar a můžeme v něm posouvat dle délky texu. Rozdíl mezi visibility : hidden a display : none; je ten že když dáme display : none tak se nám element vytrhne z toku dokumentu a může ho překrýt něco jiného -> kdežto u visibility : hiddne nám místo elementu zůstává akorát je schovaný obsah. 
+https://css-tricks.com/guides/
+https://html-css-js.com/
+https://codepen.io
+Tabulky -> <td rowspan="2"> <td colspan="2">
+Forms -> 

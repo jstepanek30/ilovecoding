@@ -1,0 +1,30 @@
+HTML je standardní značkovací jazyk. Na rozdíl od programovacích jazyků neřeší logickou stránku věci ale pouze strukturu stránky. Jediný účel HTML jazyka je tedy rozvržení struktury stránky či webových aplikací. Společně s CSS a JavaScript vytváři základní kámen webových stránek. HTML je charakterizován pouze HTML elementy neboli tagy. Stránku tedy sestavíme pouze pomocí HTML elementů. Elementy vytváříme pomocí znaků 'je větší' a 'je menší', například <p> - paragraf neboli odstavec -> každý element musí výt ukončen tak že přidáme lomítko -> <p>nějaký text</p>. Elementy mohou mít atributy, v závisloti na tom jaké elementy právě používáme tak mají k dispozici sadu atributů které zapisujeme do 'otevírajicího' tagu, například: <p attribute="hodnota_attributu"></p>. Některé elementy nemají uzavírací tag a uzavíráme je takto: <br/> -> není to nutnost ale je to lepší pro přehlednost. Reference pro HTML tagy je na stránkách mozzily -> https://developer.mozilla.org/en-US/docs/Web/HTML/Element.
+
+Následující tagy tvoří jádro stránky a budou obsaženy v jakékoliv stránce:
+
+<!DOCTYPE html> říká prohlížeci aby zpracoval stránku pomocí poslední verze jazyku HTML. 
+<html></html> jedná se o základní tag který definuje stránku -> atribut lang="cs" definuje jazyk dokumentu - v tomto případě 'český', tento tag má pouze 2 podtagy (děti) a to head a body.
+<head></head> do vnitř tohoto tagu patří vlastnosti stránky neboli metadata.
+<body></body> sem patří veškerý viditelný obsah stránky.
+<title></title> tag který nám zobrazí text na záložce, důležité pro vyhledávací automaty!
+
+Další základní tagy:
+
+<h1></h1>...<h6></h6> základnní tag pro nadpisy až do šesti úrovní.
+<i></i><strong></strong> zvýraznění textu kurzívou a tučně, má sémantický význam pro vyhledávače!
+poznámka k vnořování: při vnořování tagů je duležité dodržet hiearchii -> <span><strong>...</strong></span>.
+<a></a> důležitý tag pro odkazy -> základní atribut href="odkaz" -> přesměruje na zadaný odkaz, target="_blank" -> otevře na nové záložce.
+<div></div> je základní element pro vymezování obsahu, tzn. utvoří kontejner pro určitý obsah -> hlavním využitím je pro CSS. Tento element využije veškeré místo na daném řádku/řádcích -> tzv. blokový element.
+<span></span> je velmi podobný divu s tím rozdílem že nevyužije celý řádek ale pouze oblast vyznečenou mezi tagy. Jedná se o řádkový element.
+<ul></ul>, <ol></ol> jedná se o seznamové elementy -> unordered a ordered list, zajímavý atribut je type="" kde můžeme měnit ruzné odrážky -> lepší je to formátovat v CSS.
+<li></li> jedná se o položku seznamu (list seznamu) -> využívá se v obou seznamech jako jedná položka.
+<img> tento tag nám umožní vložit obrázek do stránky - základní atributy src a alt. 
+<video></video><audio></audio> tento tag nám umožní vložit do stránky video/audio - základní atributy src, controls, muted.
+
+Speciální znaky neboli 'entity' přidáváme do dokumentu pomocí znaku '&' (ampersand) -> tyto speciální znaky a jejich kódy najdeme na stránkach mozzily jako entity. Důvodem proč musíme tyto znaky takto zapisovat je že ne každá klávesnice umožňuje psaní těchto znaků. Dalším důvodem je že některé tyto znaky jako jsou <>, '', "" jsou použity samotným HTML jazykem a nezobrazily by se nám nikdy. Komentáře -> zapíšeme takto: <!-- sem napíšeme komentář -->. 
+
+Meta elementy reprezentují informace o stránce které nejsou na stránce vidět. Například: <meta charset="UTF-8" /> nám nastaví znakovou sadu stránky na UTF-8, <meta name="vieport" content="witdh=device-width" ...> tyto informace jsou duležité k nastavení responzivity webu. Mezi důležité meta elementy patří: <meta name="description" content="what is this page about"> tento meta element nám vytvoří obecný popis stránky a je důležití pro vyhledávače! obsah v atributu content se zobrazí v google vyhledávači jako text pod odkazem. <meta name="keywords" content="about, programming"> do tohoto tagu zapíšeme tagy pomocí kterých definujeme naší stránku a její obsah -> opět důležité prop vyhledávače!
+
+Speciální elementy: 
+<blockquote></blockquote><pre></pre> - vhodné pro psaní například programovího kódu -> dodržuje formátování a znaky přesně tak jak je zapíšeme!
+

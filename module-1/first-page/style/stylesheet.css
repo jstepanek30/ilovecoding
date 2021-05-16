@@ -1,0 +1,24 @@
+html {
+    width: 75%;
+    margin: auto;
+    box-sizing: border-box;
+}
+main {
+    
+    
+    border: 5px solid ;
+    padding: 5px;
+    color:rgb(139, 20, 207);
+    background-color: cyan;
+    height: 400px;
+    
+    visibility: collapse;
+}
+.link {
+    display: inline-block;
+    border: 1px solid black;
+    background-color: darkcyan;
+    width: 150px;
+    height: 150px;
+
+}
